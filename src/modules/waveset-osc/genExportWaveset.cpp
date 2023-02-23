@@ -420,4 +420,4 @@ namespace wavesetOscGen
 		delete self;
 	}
 
-} // waveset2::
+} 

@@ -44,7 +44,6 @@ struct WavesetOsc : Module
 	int count = 0;
 	float pitch = 0.5;
 	float frequency;
-	int debugCounter = 0;
 
 	WavesetOsc()
 	{
@@ -149,7 +148,6 @@ struct WavesetOsc : Module
 		{
 			if (inputs[i].isConnected())
 			{
-				// inputBuffers[i][count] = inputs[i].getVoltage() / 5.f;
 				// frequency
 				if (i == 0)
 				{
@@ -160,12 +158,6 @@ struct WavesetOsc : Module
 				}
 				if (i == 1)
 				{
-					// if (debugCounter >= 88100)
-					// {
-					// 	INFO("voltage is: %f", inputBuffers[1][count]);
-					// 	debugCounter = 0;
-					// }
-					// debugCounter++;
 					inputBuffers[1][count] = convertRange(inputs[1].getVoltage(), 0.f, 10.f, 1.f, 47);
 				}
 				if (i == 2)
@@ -175,7 +167,6 @@ struct WavesetOsc : Module
 			}
 			else
 			{
-				// lets give them some default values
 				if (i == 0) // frequency
 				{
 					inputBuffers[0][count] = 440;
@@ -221,12 +212,6 @@ struct WavesetOsc : Module
 
 			// Fill the buffers
 			perform(moduleState, inputBuffers, numInputs, outputBuffers, numOutputs, currentBufferSize);
-
-			// if (counter <= 20)
-			// {
-			// int hello = getNumSamples(moduleState);
-			// 	INFO("hello %d", hello);
-			// }
 			counter++;
 		}
 	}

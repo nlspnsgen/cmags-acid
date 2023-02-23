@@ -47,4 +47,4 @@ void *create(t_param sr, long vs);
 void destroy(CommonState *cself);
 int getNumSamples(CommonState *cself);
 void setWavePath(CommonState *cself, std::string path);
-} // waveset2::
+} 
