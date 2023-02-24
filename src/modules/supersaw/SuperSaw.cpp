@@ -97,7 +97,7 @@ struct SuperSaw : Module
 		pitch = clamp(pitch, -4.f, 4.f);
 		float freq = dsp::FREQ_C4 * std::pow(2.f, pitch);
 
-		for (int i = 0; i <= 6; i++)
+		for (int i = 0; i <= voices; i++)
 		{
 			left += sawUp(args, (freq + spread * i), i);
 			right += sawUp(args, (freq + spread * i), i);
@@ -118,10 +118,10 @@ struct SuperSawWidget : ModuleWidget
 
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.828, 44.536)), module, SuperSaw::SPREAD_INPUT));
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.828, 85.882)), module, SuperSaw::VOICES_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(4.31, 121.349)), module, SuperSaw::VOCT_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(4.31, 120)), module, SuperSaw::VOCT_INPUT));
 
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(26.422, 100.232)), module, SuperSaw::OUTPUT_LEFT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(26.422, 121.232)), module, SuperSaw::OUTPUT_RIGHT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(26.422, 110)), module, SuperSaw::OUTPUT_LEFT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(26.422, 120)), module, SuperSaw::OUTPUT_RIGHT));
 		
 	}
 };
