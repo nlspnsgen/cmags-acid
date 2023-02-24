@@ -12,12 +12,20 @@
   "sourceUrl": "",
   "donateUrl": "",
   "changelogUrl": "",
-  "modules": [    {
-    "slug": "wavesetOsc",
-    "name": "wavesetOsc",
-    "description": "",
-    "tags": [
-      "oscillator"
-    ]
-  }]
+  "modules": [
+    {
+      "slug": "wavesetOsc",
+      "name": "wavesetOsc",
+      "description": "",
+      "tags": [
+        "oscillator"
+      ]
+    },
+    {
+      "slug": "SuperSaw",
+      "name": "SuperSaw",
+      "description": "",
+      "tags": []
+    }
+  ]
 }

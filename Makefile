@@ -14,11 +14,13 @@ LDFLAGS +=
 FLAGS += -Isrc/genlib -Igen/exports -DGENLIB_NO_JSON
 SOURCES += $(wildcard src/genlib/*.cpp)
 SOURCES += $(wildcard src/modules/waveset-osc/*.cpp)
+
 # Add .cpp files to the build
 # VCV module
 FLAGS += -Isrc 
 SOURCES += $(wildcard src/*.cpp)
 SOURCES += $(wildcard src/modules/waveset-osc/*.cpp)
+SOURCES += $(wildcard src/modules/supersaw/*.cpp)
 
 # Add files to the ZIP package when running `make dist`
 # The compiled plugin and "plugin.json" are automatically added.
