@@ -26,6 +26,12 @@
       "name": "SuperSaw",
       "description": "",
       "tags": []
+    },
+    {
+      "slug": "Clock",
+      "name": "Clock",
+      "description": "",
+      "tags": []
     }
   ]
 }

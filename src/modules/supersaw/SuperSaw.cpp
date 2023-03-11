@@ -1,5 +1,5 @@
 #include "plugin.hpp"
-#include <math.h>  
+#include <math.h>
 
 struct SuperSaw : Module
 {
@@ -38,7 +38,7 @@ struct SuperSaw : Module
 		}
 		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
 		configParam(SPREAD_PARAM, 0.f, 1.f, 0.f, "spread");
-		configParam(VOICES_PARAM, 0.1f, 15.9f, 0.f, "voices");
+		configParam(VOICES_PARAM, 1, 16, 1, "voices");
 		configInput(SPREAD_INPUT, "spread");
 		configInput(VOICES_INPUT, "voices");
 		configInput(VOCT_INPUT, "v/oct");
@@ -97,7 +97,7 @@ struct SuperSaw : Module
 		pitch = clamp(pitch, -4.f, 4.f);
 		float freq = dsp::FREQ_C4 * std::pow(2.f, pitch);
 
-		for (int i = 0; i <= voices; i++)
+		for (int i = 0; i < voices; i++)
 		{
 			left += sawUp(args, (freq + spread * i), i);
 			right += sawUp(args, (freq + spread * i), i);
@@ -107,21 +107,34 @@ struct SuperSaw : Module
 	}
 };
 
+// struct RoundBigBlackSnapKnob : RoundBigBlackKnob {
+// 	RoundBigBlackSnapKnob(){
+// 		snap: true;
+// 		smooth: false;
+// 	}
+// };
+
+struct Davies1900hWhiteSnapKnob : Davies1900hWhiteKnob {
+	Davies1900hWhiteSnapKnob() {
+		snap = true;
+	}
+};
+
 struct SuperSawWidget : ModuleWidget
 {
 	SuperSawWidget(SuperSaw *module)
 	{
 		setModule(module);
 		setPanel(createPanel(asset::plugin(pluginInstance, "res/SuperSaw.svg")));
-		addParam(createParamCentered<RoundBigBlackKnob>(mm2px(Vec(15.542, 24.112)), module, SuperSaw::SPREAD_PARAM));
-		addParam(createParamCentered<RoundBigBlackKnob>(mm2px(Vec(15.542, 65.625)), module, SuperSaw::VOICES_PARAM));
+		addParam(createParamCentered<Davies1900hWhiteKnob>(mm2px(Vec(15.542, 34.112)), module, SuperSaw::SPREAD_PARAM));
+		addParam(createParamCentered<Davies1900hWhiteSnapKnob>(mm2px(Vec(15.542, 75.625)), module, SuperSaw::VOICES_PARAM));
 
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.828, 44.536)), module, SuperSaw::SPREAD_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.828, 85.882)), module, SuperSaw::VOICES_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(4.31, 120)), module, SuperSaw::VOCT_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.828, 46.836)), module, SuperSaw::SPREAD_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.828, 87.882)), module, SuperSaw::VOICES_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.31, 120)), module, SuperSaw::VOCT_INPUT));
 
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(26.422, 110)), module, SuperSaw::OUTPUT_LEFT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(26.422, 120)), module, SuperSaw::OUTPUT_RIGHT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(25.422, 110)), module, SuperSaw::OUTPUT_LEFT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(25.422, 120)), module, SuperSaw::OUTPUT_RIGHT));
 		
 	}
 };
