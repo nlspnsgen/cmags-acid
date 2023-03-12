@@ -32,6 +32,12 @@
       "name": "Clock",
       "description": "",
       "tags": []
+    },
+    {
+      "slug": "RampToTrig",
+      "name": "RampToTrig",
+      "description": "",
+      "tags": []
     }
   ]
 }

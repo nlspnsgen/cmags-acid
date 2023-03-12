@@ -23,7 +23,7 @@ SOURCES += $(wildcard src/*.cpp)
 SOURCES += $(wildcard src/modules/waveset-osc/*.cpp)
 SOURCES += $(wildcard src/modules/supersaw/*.cpp)
 SOURCES += $(wildcard src/modules/clock/*.cpp)
-
+SOURCES += $(wildcard src/modules/RampToTrig/*.cpp)
 # Add files to the ZIP package when running `make dist`
 # The compiled plugin and "plugin.json" are automatically added.
 DISTRIBUTABLES += res

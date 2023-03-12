@@ -11,3 +11,4 @@ extern Plugin *pluginInstance;
 extern Model *modelWavesetOsc;
 extern Model *modelSuperSaw;
 extern Model *modelClock;
+extern Model* modelRampToTrig;
